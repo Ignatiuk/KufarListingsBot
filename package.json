@@ -1,0 +1,25 @@
+{
+  "name": "KufarMonitoringBot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/merikovich/KufarMonitoringBot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/merikovich/KufarMonitoringBot/issues"
+  },
+  "homepage": "https://github.com/merikovich/KufarMonitoringBot#readme",
+  "dependencies": {
+    "nodemon": "^2.0.7",
+    "slimbot": "^5.1.0"
+  }
+}
