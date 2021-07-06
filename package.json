@@ -19,7 +19,10 @@
   },
   "homepage": "https://github.com/merikovich/KufarMonitoringBot#readme",
   "dependencies": {
+    "cheerio": "^1.0.0-rc.9",
+    "cron": "^1.8.2",
+    "got": "^11.8.2",
     "nodemon": "^2.0.7",
-    "slimbot": "^5.1.0"
+    "telegraf": "^4.4.0"
   }
 }
