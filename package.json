@@ -19,9 +19,11 @@
   },
   "homepage": "https://github.com/merikovich/KufarMonitoringBot#readme",
   "dependencies": {
+    "axios": "^0.21.1",
     "cheerio": "^1.0.0-rc.9",
     "cron": "^1.8.2",
     "got": "^11.8.2",
+    "mongoose": "^5.13.2",
     "nodemon": "^2.0.7",
     "telegraf": "^4.4.0"
   }
