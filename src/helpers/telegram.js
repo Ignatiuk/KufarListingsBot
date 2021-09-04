@@ -1,6 +1,5 @@
 const User = require('../models/user.js');
-const Request = require('../models/request');
-const bot = require('../logic/telegram.js');
+const Request = require('../models/request.js');
 
 const MENU_OPTIONS = {
   parse_mode: 'Markdown',
@@ -88,7 +87,7 @@ const Message = {
   },
 
   async onDefault(ctx) {
-    ctx.reply('Немного не понял тебя 😪\nИспользуй команды: /menu', MENU_OPTIONS);
+    ctx.reply('Немного не понял тебя 😪\nПользуйся меню ниже!', MENU_OPTIONS);
   },
 }
 
@@ -110,7 +109,7 @@ const Action = {
     );
   },
 
-  async onMessage(ctx) {
+  async onMessage(ctx, bot) {
     const users = await User.find({});
 
     users.forEach(user => {

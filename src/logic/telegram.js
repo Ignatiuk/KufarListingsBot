@@ -37,7 +37,7 @@ bot.on('message', async (ctx) => {
         break;
 
       case 'message':
-        await Action.onMessage(ctx);
+        await Action.onMessage(ctx, bot);
         break;
     }
   } else {
