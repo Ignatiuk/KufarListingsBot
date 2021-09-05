@@ -10,10 +10,15 @@ const Service = {
     const queryString = paramsToQueryString(params);
     const vgmUrl = LISTINGS_URL + queryString;
 
-    await got(vgmUrl).then(response => {
+    await got(vgmUrl).then(async response => {
       const $ = cheerio.load(response.body);
-      const listingsData = $('div[data-name=listings] article > div');
-      const list = [...listingsData][0].children.slice(0, count);
+      const listingsData = [...$('div[data-name=listings] article > div')];
+
+      if (!listingsData.length) {
+        return;
+      }
+
+      const list = listingsData[0].children.slice(0, count);
 
       const selectors = {
         date: 'a > div:first-child span',
