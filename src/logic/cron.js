@@ -25,8 +25,8 @@ async function parse({ query, userId, lastListing }) {
     newListings.push(listings[0]);
   }
 
-  if (newListings.length) {
-    newListings.reverse().forEach(async listing => {
+  if (newListings[0]) {
+    for (const listing of newListings.reverse()) {
       try {
         const caption = `*${listing.title}*\n\n${listing.price}\n${listing.place}\n\n${listing.link}`;
         const photos = await KufarService.getListingPhotos(listing.link);
@@ -40,13 +40,18 @@ async function parse({ query, userId, lastListing }) {
 
         await bot.telegram.sendMediaGroup(userId, media);
       } catch (e) {
-        if (e.response.description.includes('bot was blocked by the user')) {
+        const desc = e.response?.description || ''
+
+        if (
+          desc.includes('bot was blocked by the user') ||
+          desc.includes('chat not found')
+        ) {
           await Request.deleteOne({ userId });
         }
 
         console.error(e);
       }
-    });
+    }
   }
 
   await Request.updateOne({ userId }, { lastListing: listings[0] });
@@ -59,9 +64,9 @@ async function checkRequests() {
     return;
   }
 
-  requests.forEach(async req => {
-    await parse(req);
-  });
+  for (const request of requests) {
+    await parse(request);
+  }
 }
 
 const job = new CronJob(
